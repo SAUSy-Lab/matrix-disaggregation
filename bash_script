@@ -1,0 +1,27 @@
+#!/bin/bash
+# WRC : 05/09/2014  -> Script to perform a simple test
+
+export CURR_DIR=`pwd`
+export EXE=$CURR_DIR/ODdis
+
+# Remove the top line of each of the original input files
+export OIKFILE=$CURR_DIR/Detroit2/Detroit_Oik.txt
+export DJKFILE=$CURR_DIR/Detroit2/Detroit_Djk.txt
+export ODFILE=$CURR_DIR/Detroit2/Detroit_OD.txt
+export CIJFILE=$CURR_DIR/Detroit2/Detroit_Cij.txt
+export OUTFILE=$CURR_DIR/Detroit2/Detroit2.out
+
+export N=1301
+export KK=5
+export BETA=0.01
+export CONVI=45
+export CONVJ=62
+
+export mi=1000
+export outside=100
+
+# INVOKE The EXECUTABLE with only the MANDATORY options 
+echo "Start at: `date`"
+echo "Hostname:`hostname`"
+$EXE --oik $OIKFILE  --djk $DJKFILE  --od  $ODFILE   --dis $CIJFILE  --out $OUTFILE  --nrow $N  --ncol $KK  --beta $BETA --convi $CONVI --convj $CONVJ --maxiter $mi --bc_dis $outside
+echo "End Time: `date`"
